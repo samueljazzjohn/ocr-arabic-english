@@ -7,22 +7,28 @@ from pdf2image import convert_from_path
 from fastapi import HTTPException
 from fastapi.responses import JSONResponse
 from starlette.concurrency import run_in_threadpool
+from concurrent.futures import ThreadPoolExecutor
 
 from app.config.constants import HOST, SCHEME
+
+def ocr_page(image, page_number):
+    text = pytesseract.image_to_string(image, lang='ara+eng', config='.')
+    if text.strip():
+        return {"page": page_number, "text": text}
+    return None
 
 async def extract_arabic_english(pdf_file: str):
     try:
         # Convert PDF to images asynchronously
         pages = await run_in_threadpool(convert_from_path, pdf_file)
         
-        extracted_text = []
+        # Use ThreadPoolExecutor for parallel processing of pages
+        with ThreadPoolExecutor() as executor:
+            futures = [executor.submit(ocr_page, image, page_number) for page_number, image in enumerate(pages, start=1)]
+            results = [future.result() for future in futures]
 
-        for page_number, image in enumerate(pages, start=1):
-            # Perform OCR to extract text from the image asynchronously
-            text = await run_in_threadpool(pytesseract.image_to_string, image, lang='ara+eng', config='.')
-
-            if text.strip():
-                extracted_text.append({"page": page_number, "text": text})
+        # Filter out None results (pages with no text)
+        extracted_text = [result for result in results if result is not None]
 
         if extracted_text:
             df = pd.DataFrame(extracted_text)
