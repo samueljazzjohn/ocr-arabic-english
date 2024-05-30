@@ -42,7 +42,7 @@ Thumbs.db
 *.wmv
 compute-key.json
 venv/
-app/config/data
+app/config/data/extracted_data/
 NewCrawled.csv
 
 # Environment variables
