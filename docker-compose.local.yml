@@ -7,5 +7,10 @@ services:
       context: .
     env_file:
       - .env.local
+    labels:
+      - "traefik.api.port=80"
+      - "traefik.protocol=http"
+      - "traefik.frontend.rule=Host:${HOST}"
     volumes:
       - "./app:/code/app"
+    

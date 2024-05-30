@@ -6,12 +6,8 @@ services:
     build:
       dockerfile: Dockerfile
     restart: always
-    logging:
-      options:
-        max-size: "50m"
-        max-file: "3"
-    ports:
-      - "8090:80"
+    env_file:
+      - .env
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.bilingual-text-extractor.rule=Host(`$HOST`)"
@@ -19,10 +15,6 @@ services:
       - "traefik.http.routers.bilingual-text-extractor.tls=true"
       - "traefik.http.routers.bilingual-text-extractor.tls.certresolver=myresolver"
       - "traefik.http.services.bilingual-text-extractor.loadbalancer.server.port=80"
-    env_file:
-      - .env
-    networks:
-      - docker_net
     
 networks:
   docker_net:
