@@ -1,5 +1,6 @@
-from fastapi import FastAPI, WebSocket, WebSocketDisconnect
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from app.routers import extract
 
 app = FastAPI()
@@ -28,4 +29,11 @@ app.include_router(
     prefix="/extract",
     tags=["Arabic + English Document Extraction"]
 )
+
+app.include_router(
+    extract.router,
+    prefix="/train",
+    tags=["Sync Trained data"]
+)
    
+app.mount("/data", StaticFiles(directory="app/config/data"), name="data")
