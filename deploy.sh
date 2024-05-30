@@ -19,5 +19,5 @@ while getopts ":u:" opt; do
   esac
 done
 
-docker compose -p lb -f docker-compose-lb.yml -f docker-compose-lb-ssl.yml up --build -d
+docker compose -p lb -f docker-compose.traefik.yml up --build -d
 docker compose -p bilingual-doc-extractor -f docker-compose.yml  -f docker-compose.server.yaml up --build -d
