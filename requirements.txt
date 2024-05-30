@@ -9,3 +9,4 @@ poppler-utils
 pytesseract
 pymupdf
 pandas
+pdf2image

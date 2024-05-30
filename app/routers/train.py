@@ -14,7 +14,7 @@ if environ.get('DEBUG'):
 router = APIRouter()
 
 
-@router.post("/")
+@router.post("/arabic-data")
 async def sync_trained_data_with_model():
     try:
         return await download_trained_data()

@@ -15,7 +15,7 @@ if environ.get('DEBUG'):
 router = APIRouter()
 
 
-@router.get("/")
+@router.post("/arabic_english_document")
 @handleAPIError
 async def extract_arabic_english_doc(file: UploadFile = File(...)):
     try: 
@@ -24,5 +24,5 @@ async def extract_arabic_english_doc(file: UploadFile = File(...)):
             pdf.write(file.file.read())
         return await extract_arabic_english(pdf_path)
     except Exception as e:
-        error_message = "Failed to connect to talkingdb: " + str(e)
+        error_message = "Failed to load the data: " + str(e)
         return {"Status": False, "message": error_message}

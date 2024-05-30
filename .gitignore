@@ -3,10 +3,6 @@
 # Learn more about .gitignore:
 #     https://www.atlassian.com/git/tutorials/saving-changes/gitignore
 
-# Node artifact files
-node_modules/
-dist/
-
 # Compiled Java class files
 *.class
 
@@ -15,9 +11,6 @@ dist/
 
 # Log files
 *.log
-
-# Package files
-*.jar
 
 # Maven
 target/
@@ -49,9 +42,9 @@ Thumbs.db
 *.wmv
 compute-key.json
 venv/
-app/src
+app/config/data
 NewCrawled.csv
 
-
+# Environment variables
 .env
 .env.local

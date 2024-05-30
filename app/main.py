@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from app.routers import extract
+from app.routers import extract, train
 
 app = FastAPI()
 
@@ -31,7 +31,7 @@ app.include_router(
 )
 
 app.include_router(
-    extract.router,
+    train.router,
     prefix="/train",
     tags=["Sync Trained data"]
 )
