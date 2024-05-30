@@ -20,4 +20,4 @@ while getopts ":u:" opt; do
 done
 
 docker compose -p lb -f docker-compose-lb.yml -f docker-compose-lb-ssl.yml up --build -d
-docker compose -p bilingual-doc-extractor -f docker-compose.yml up --build -d
+docker compose -p bilingual-doc-extractor -f docker-compose.server.yml up --build -d
