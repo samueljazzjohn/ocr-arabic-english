@@ -32,7 +32,7 @@ async def extract_arabic_english(pdf_file):
             # Save the DataFrame to a CSV file
             output_csv_path = pdf_file.replace('.pdf', '.csv')
             df.to_csv(output_csv_path, index=False, encoding='utf-8')
-            return JSONResponse(status_code=200, content={"message": f"You can download the extracted file from here: {SCHEME}://{HOST}/data/{output_csv_path.split('/')[-1]}."})
+            return JSONResponse(status_code=200, content={"message": f"You can download the extracted file from here: {SCHEME}://{HOST}/data/extracted_data/{output_csv_path.split('/')[-1]}."})
         else:
             return JSONResponse(status_code=200, content={"message": f"No text found in the PDF after OCR."})
     except Exception as e:
