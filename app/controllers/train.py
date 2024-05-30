@@ -17,7 +17,7 @@ async def download_trained_data():
                 file.write(response.content)
 
             # Set the TESSDATA_PREFIX environment variable
-            os.environ['TESSDATA_PREFIX'] = '.'
+            os.environ['TESSDATA_PREFIX'] = '/usr/share/tesseract-ocr/5/tessdata/'
 
             return JSONResponse(status_code=200, content={"message": f"Downloaded {TRAINED_FILE_NAME} successfully."})
         else:
