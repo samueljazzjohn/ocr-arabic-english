@@ -33,7 +33,7 @@ app.include_router(
 app.include_router(
     train.router,
     prefix="/train",
-    tags=["Sync Trained data"]
+    tags=["Sync Trained dataset for Arabic"]
 )
    
 app.mount("/data", StaticFiles(directory="app/config/data"), name="data")
