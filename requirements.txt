@@ -8,3 +8,4 @@ gTTS
 poppler-utils
 pytesseract
 pymupdf
+pandas
