@@ -1,0 +1,11 @@
+version: "3.4"
+
+services:
+  bilingual-text-extractor:
+    build:
+      dockerfile: Dockerfile.local
+      context: .
+    env_file:
+      - .env.local
+    volumes:
+      - "./app:/code/app"

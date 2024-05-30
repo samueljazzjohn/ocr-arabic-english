@@ -1,0 +1,18 @@
+image: maven:3.3.9
+ 
+pipelines:
+  branches:
+    develop:
+      - step:
+          name: Patch version update
+          script:
+            - bash version.sh patch
+      - step:
+          name: Trigger Deploy
+          script:
+            - pipe: atlassian/ssh-run:0.6.0
+              variables:
+                SSH_USER: 'thejazz'
+                SERVER: 'backend.chatbot.kray.ai'
+                MODE: 'script'
+                COMMAND: './ssh_cicd.sh'

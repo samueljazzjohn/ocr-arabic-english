@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+debugpy 
+requests
+pydotplus
+pytesseract
+gTTS
+poppler-utils
+pytesseract
+pymupdf

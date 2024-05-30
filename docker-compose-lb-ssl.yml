@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  traefik:
+    ports:
+      - "443:443"
+    command: >
+      sh -c "sh /etc/traefik/acme/acme.sh;
+      traefik 
+      --logLevel='WARN'
+      --InsecureSkipVerify=true
+      --defaultentrypoints=https,http
+      --entryPoints='Name:http Address::80'
+      --entryPoints='Name:https Address::443 TLS'
+      --retry
+      --docker
+      --docker.endpoint='unix:///var/run/docker.sock'
+      --docker.exposedbydefault=false
+      --docker.watch=true
+      --acme
+      --acme.storage=/etc/traefik/acme/acme.json
+      --acme.email=mayank.g@smarter.codes
+      --acme.entryPoint=https
+      --acme.onHostRule=true
+      --acme.httpchallenge.entrypoint=http"
+    volumes:
+      - ./acme:/etc/traefik/acme
