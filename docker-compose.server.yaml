@@ -10,11 +10,16 @@ services:
       - .env
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.bilingual-text-extractor.rule=Host(`$HOST`)"
-      - "traefik.http.routers.bilingual-text-extractor.entrypoints=websecure"
-      - "traefik.http.routers.bilingual-text-extractor.tls=true"
-      - "traefik.http.routers.bilingual-text-extractor.tls.certresolver=myresolver"
-      - "traefik.http.services.bilingual-text-extractor.loadbalancer.server.port=80"
+      - "traefik.http.routers.bilingual-text-extractor-host1.rule=Host(`$HOST_PRIMARY`)"
+      - "traefik.http.routers.bilingual-text-extractor-host1.entrypoints=websecure"
+      - "traefik.http.routers.bilingual-text-extractor-host1.tls=true"
+      - "traefik.http.routers.bilingual-text-extractor-host1.tls.certresolver=myresolver"
+      - "traefik.http.services.bilingual-text-extractor-host1.loadbalancer.server.port=80"
+      - "traefik.http.routers.bilingual-text-extractor-host2.rule=Host(`$HOST_SECONDARY`)"
+      - "traefik.http.routers.bilingual-text-extractor-host2.entrypoints=websecure"
+      - "traefik.http.routers.bilingual-text-extractor-host2.tls=true"
+      - "traefik.http.routers.bilingual-text-extractor-host2.tls.certresolver=myresolver"
+      - "traefik.http.services.bilingual-text-extractor-host2.loadbalancer.server.port=80"
     volumes:
       - "./app/config/data:/code/app/config/data"
     

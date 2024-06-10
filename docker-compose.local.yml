@@ -10,7 +10,8 @@ services:
     labels:
       - "traefik.api.port=80"
       - "traefik.protocol=http"
-      - "traefik.frontend.rule=Host:${HOST}"
+      - "traefik.frontend-host1.rule=Host:${HOST_PRIMARY}"
+      - "traefik.frontend-host2.rule=Host:${HOST_SECONDARY}"
     volumes:
       - "./app:/code/app"
     
