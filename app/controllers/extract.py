@@ -37,7 +37,7 @@ async def extract_arabic_english(pdf_file: str):
 
             return JSONResponse(
                 status_code=200,
-                content={"message": f"You can download the extracted file from here: {SCHEME}://{HOST}/data/extracted_data/{output_csv_path.split('/')[-1]}."}
+                content={"message": f"You can download the extracted file from here: {SCHEME}://{HOST}/data/extracted_data/{output_csv_path.split('/')[-1]}.","file":f"{SCHEME}://{HOST}/data/extracted_data/{output_csv_path.split('/')[-1]}"}
             )
         else:
             return JSONResponse(
