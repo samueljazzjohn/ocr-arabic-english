@@ -10,7 +10,7 @@ services:
       - .env
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.bilingual-text-extractor.rule=Host(`$HOST_PRIMARY`, `$HOST_SECONDARY`)"
+      - "traefik.http.routers.bilingual-text-extractor.rule=Host(`$HOST`)"
       - "traefik.http.routers.bilingual-text-extractor.entrypoints=websecure"
       - "traefik.http.routers.bilingual-text-extractor.tls=true"
       - "traefik.http.routers.bilingual-text-extractor.tls.certresolver=myresolver"
