@@ -15,7 +15,7 @@ services:
       - "--entrypoints.web.http.redirections.entrypoint.permanent=true"
       - "--entrypoints.websecure.address=:443"
       - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
-      - "--certificatesresolvers.myresolver.acme.email=sadkirat.s@smarter.codes"
+      - "--certificatesresolvers.myresolver.acme.email=samuel.j@smarter.codes"
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
     networks:
       - docker_net   
