@@ -1,7 +1,6 @@
 FROM python:3.9
 WORKDIR /code
 COPY ./requirements.txt .
-COPY /traefik .
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 RUN pip install gunicorn
 
