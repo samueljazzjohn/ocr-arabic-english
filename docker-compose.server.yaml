@@ -14,7 +14,6 @@ services:
       - "traefik.http.routers.bilingual-text-extractor.entrypoints=websecure"
       - "traefik.http.routers.bilingual-text-extractor.tls=true"
       - "traefik.http.routers.bilingual-text-extractor.tls.certresolver=myresolver"
-      - "traefik.http.routers.bilingual-text-extractor.middlewares=cors@file"
       - "traefik.http.services.bilingual-text-extractor.loadbalancer.server.port=80"
     volumes:
       - "./app/config/data:/code/app/config/data"
