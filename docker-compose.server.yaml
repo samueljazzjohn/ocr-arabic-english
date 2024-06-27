@@ -16,10 +16,10 @@ services:
       - "traefik.http.routers.bilingual-text-extractor.tls.certresolver=myresolver"
       - "traefik.http.routers.bilingual-text-extractor.middlewares=cors"
       - "traefik.http.services.bilingual-text-extractor.loadbalancer.server.port=80"
-      - "traefik.http.middlewares.cors.headers.accesscontrolallowmethods=*"
-      - "traefik.http.middlewares.cors.headers.accesscontrolalloworiginlist=*"
-      - "traefik.http.middlewares.cors.headers.accesscontrolmaxage=100"
-      - "traefik.http.middlewares.cors.headers.addvaryheader=true"
+      - "traefik.http.middlewares.cors.headers.accessControlAllowMethods=*"
+      - "traefik.http.middlewares.cors.headers.accessControlAllowOriginList=*"
+      - "traefik.http.middlewares.cors.headers.accessControlMaxAge=100"
+      - "traefik.http.middlewares.cors.headers.addVaryHeader=true"
     volumes:
       - "./app/config/data:/code/app/config/data"
     
