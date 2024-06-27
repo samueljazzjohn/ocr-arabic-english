@@ -14,13 +14,8 @@ services:
       - "traefik.http.routers.bilingual-text-extractor.entrypoints=websecure"
       - "traefik.http.routers.bilingual-text-extractor.tls=true"
       - "traefik.http.routers.bilingual-text-extractor.tls.certresolver=myresolver"
+      - "traefik.http.routers.bilingual-text-extractor.middlewares=cors@file"
       - "traefik.http.services.bilingual-text-extractor.loadbalancer.server.port=80"
-      - "traefik.http.routers.bilingual-text-extractor.middlewares=bilingual-header"
-      - "traefik.http.middlewares.bilingual-header.headers.accesscontrolallowmethods=*"
-      - "traefik.http.middlewares.bilingual-header.headers.accesscontrolallowheaders=*"
-      - "traefik.http.middlewares.bilingual-header.headers.accesscontrolalloworiginlist=*"
-      - "traefik.http.middlewares.bilingual-header.headers.accesscontrolmaxage=100"
-      - "traefik.http.middlewares.bilingual-header.headers.addvaryheader=true"
     volumes:
       - "./app/config/data:/code/app/config/data"
     

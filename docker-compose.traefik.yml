@@ -17,6 +17,7 @@ services:
       - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
       - "--certificatesresolvers.myresolver.acme.email=samuel.j@smarter.codes"
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+      - "--providers.file.filename=/dynamic/cors.yml"
     networks:
       - docker_net   
     ports:
