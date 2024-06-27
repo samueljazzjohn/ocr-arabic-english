@@ -6,7 +6,8 @@ from app.routers import extract, train
 app = FastAPI()
 
 origins = [
-    "*","https://extractor-dashboard.pivotpie.com"
+    "https://extractor-dashboard.pivotpie.com",
+    "*"
 ]
 
 app.add_middleware(
