@@ -1,10 +1,11 @@
 from os import environ
 import json
-from fastapi import APIRouter, UploadFile, File
+from fastapi import APIRouter, UploadFile, File, Security
 from fastapi.responses import JSONResponse
 
 from app.helpers.decorators import handleAPIError,logger
 from app.controllers.extract import extract_arabic_english
+from app.controllers.security import get_api_key
 from app.config.constants import UPLOAD_DIR
 
 if environ.get('DEBUG'):
@@ -17,7 +18,7 @@ router = APIRouter()
 
 @router.post("/arabic_english_document")
 @handleAPIError
-async def extract_arabic_english_doc(file: UploadFile = File(...)):
+async def extract_arabic_english_doc(file: UploadFile = File(...),api_key: str = Security(get_api_key)):
     try: 
         pdf_path = f"{UPLOAD_DIR}/{file.filename}"
         with open(pdf_path, "wb") as pdf:

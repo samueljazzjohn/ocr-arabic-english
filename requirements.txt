@@ -10,3 +10,4 @@ pytesseract
 pymupdf
 pandas
 pdf2image
+openai
