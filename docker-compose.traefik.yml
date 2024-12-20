@@ -28,3 +28,5 @@ networks:
   docker_net:
     name: docker_net
     driver: bridge
+    external:
+      true
