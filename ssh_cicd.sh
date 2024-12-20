@@ -1,5 +1,7 @@
 cd "/home/ubuntu/chatbot-backend-service"
 
+export $(grep -v '^#' .env | xargs)
+
 sudo git pull
 sudo git checkout develop
 
