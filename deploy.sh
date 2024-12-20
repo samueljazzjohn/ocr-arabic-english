@@ -20,4 +20,4 @@ while getopts ":u:" opt; do
 done
 
 docker compose -p lb -f docker-compose.traefik.yml up --build -d
-docker compose -p bilingual-doc-extractor -f docker-compose.yml  -f docker-compose.server.yaml up --build -d
+docker compose -p bilingual-doc-extractor  -f docker-compose.server.yaml up --build -d
