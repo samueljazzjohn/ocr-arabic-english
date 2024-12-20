@@ -7,6 +7,7 @@ app = FastAPI()
 
 origins = [
     "https://extractor-dashboard.pivotpie.com",
+    "https://arabic-extractor.smarter.codes",
     "*"
 ]
 
