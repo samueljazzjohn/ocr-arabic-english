@@ -11,3 +11,4 @@ pymupdf
 pandas
 pdf2image
 openai
+python-multipart
